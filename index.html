@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./assets/css/library.css" />
+  <link rel="stylesheet" href="./assets/css/deneme.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div style="background-color:#00733d;height:100px; color:white; border-radius: 10px; border-bottom:15px solid rgb(246, 211, 48); 
+      align-items: center; box-shadow: 2px 2px 4px black;" class="col-12 container">
+      <div class=" ms-5 mt-1"><img class="ms-5" src="assets/img/iu.png" alt="" style="height: 95px;"></div>
+
+      <h3 style="text-align: center; font-size: 19px; text-shadow: 0.1px 0.1px 2px black;">Öğrenci Ders Kayıt Sistemi
+      </h3>
+
+    </div>
+
+    <div class="col-2">
+      <div class="nav-side col-2" style="box-shadow: 2px 2px 6px black;">
+        <h1 style="color:white; text-shadow: 0.1px 0.1px 2px black;" class="text-6xlg">Menü</h1>
+        <a onclick="girisEkrani()" class="text-xlg">Giriş Yap</a>
+        <a id="dersSecimEkraniA" style="display: none" onclick="dersSecimEkrani()">Ders Seçimi</a>
+        <a id="bilgiEkraniA" style="display: none" onclick="bilgiEkrani()">Öğrenci Bilgileri</a>
+        <a id="cikisyap" style="display: none" onclick="cikisYap()">Çıkış Yap</a>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-8 mt-5">
+      <div style="display: none" id="dersSecimEkrani">
+        <div style="max-height: 250px" class="table-res mt-5 mb-5">
+          <table id="dersSec" border=" ">
+            <tr>
+              <td></td>
+              <td>Ders Kodu</td>
+              <td>Ders Adı</td>
+              <td>Öğretmen Adı</td>
+              <td>Ders Saati</td>
+              <td>Ders Günü</td>
+              <td>Ders Yeri</td>
+              <td>Kayıtlı Öğrenci/Kontenjan</td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn-red" onclick="dersEkle()">Ekle</button>
+              </td>
+              <td colspan="7">
+                <select style="width: 100%" name="" id="dersler"></select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <table id="alınanDersler"></table>
+        <div style="width: 100%">
+          <table class="tablenes">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Pazartesi</th>
+                <th>Salı</th>
+                <th>Çarşamba</th>
+                <th>Perşembe</th>
+                <th>Cuma</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>08.30-09.20</td>
+                <td class="mat"></td>
+                <td class="etik"></td>
+                <td class="mat"></td>
+                <td class="etik"></td>
+                <td class="tarih"></td>
+              </tr>
+              <tr>
+                <td>09.30-10.20</td>
+                <td class="mat"></td>
+                <td class="etik"></td>
+                <td class="mat"></td>
+                <td class="etik"></td>
+                <td class="tarih"></td>
+              </tr>
+              <tr>
+                <td>10.30-11.20</td>
+                <td class="biyo"></td>
+                <td class="tarih"></td>
+                <td class="biyo"></td>
+                <td class="tarih"></td>
+                <td class="biyo"></td>
+              </tr>
+              <tr>
+                <td>11.30-12.20</td>
+                <td class="biyo"></td>
+                <td class="tarih"></td>
+                <td class="biyo"></td>
+                <td class="tarih"></td>
+                <td class="biyo"></td>
+              </tr>
+              <tr>
+                <td>12.30-13.20</td>
+                <td class="kimya"></td>
+                <td class="fizik"></td>
+                <td class="kimya"></td>
+                <td class="fizik"></td>
+                <td class="isg"></td>
+              </tr>
+              <tr>
+                <td>13.30-14.20</td>
+                <td class="kimya"></td>
+                <td class="fizik"></td>
+                <td class="kimya"></td>
+                <td class="fizik"></td>
+                <td class="isg"></td>
+              </tr>
+              <tr>
+                <td>14.30-15.20</td>
+                <td class="geo"></td>
+                <td class="geo"></td>
+                <td class="mat"></td>
+                <td class="fizik"></td>
+                <td class="isg"></td>
+              </tr>
+              <tr>
+                <td>15:30-16:20</td>
+                <td class="geo"></td>
+                <td class="geo"></td>
+                <td class="kimya"></td>
+                <td class="kimya"></td>
+                <td class="isg"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn-o-gray mt-5 pt-5" onclick="ogrDersOnay()" id="dersOnay">
+          Programı Onayla
+        </button>
+      </div>
+      <div style="display: none" id="ogrenciListesi">
+        <div>
+          <table class="table-striped" id="list">
+            <tr>
+              <td>İsim</td>
+              <td>Öğrenci Numarası</td>
+              <td>E-posta</td>
+              <td>Doğum Tarihi</td>
+              <td>İletişim Bilgileri</td>
+            </tr>
+            <tr>
+              <td>Ali Rıza Durak</td>
+              <td>18025001</td>
+              <td>alirizadurak@gmail.com</td>
+              <td>01.01.1990</td>
+              <td>+90555555555</td>
+            </tr>
+            <tr>
+              <td>İsim</td>
+              <td>Öğrenci Numarası</td>
+              <td>E-posta</td>
+              <td>Doğum Tarihi</td>
+              <td>İletişim Bilgileri</td>
+            </tr>
+            <tr>
+              <td>İsim</td>
+              <td>Öğrenci Numarası</td>
+              <td>E-posta</td>
+              <td>Doğum Tarihi</td>
+              <td>İletişim Bilgileri</td>
+            </tr>
+            <tr>
+              <td>İsim</td>
+              <td>Öğrenci Numarası</td>
+              <td>E-posta</td>
+              <td>Doğum Tarihi</td>
+              <td>İletişim Bilgileri</td>
+            </tr>
+            <tr>
+              <td>İsim</td>
+              <td>Öğrenci Numarası</td>
+              <td>E-posta</td>
+              <td>Doğum Tarihi</td>
+              <td>İletişim Bilgileri</td>
+            </tr>
+            <tr>
+              <td>İsim</td>
+              <td>Öğrenci Numarası</td>
+              <td>E-posta</td>
+              <td>Doğum Tarihi</td>
+              <td>İletişim Bilgileri</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="form" class="dersform">
+        <form class="form" onsubmit="return false">
+          <div class="img-ortala">
+            <img src="./assets/img/iu.png " style="height: 150px; width: 150px" alt="" />
+          </div>
+
+          <div class="form-bottom">
+            <div class="for-icon">
+              <label for="name" class="">Kullanıcı Adı:</label><br />
+              <input type="text" id="userName" name="userName" class="form-element"
+                placeholder="Kullanıcı Adı(Kimlik No / Ogrenci) " />
+            </div>
+
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" class="form-element" placeholder="Şifrenizi girin" />
+
+            <button type="submit" class="form-element form-btn justify-content-center" id="girisOgr"
+              onclick="girisYap()">
+              Giriş
+            </button>
+          </div>
+        </form>
+      </div>
+      <div style="display: none" id="bilgi"></div>
+    </div>
+  </div>
+  </div>
+  <script src="./assets/js/dersSecim.js"></script>
+</body>
+
+</html>
